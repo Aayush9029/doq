@@ -1,5 +1,7 @@
-# doq
 
+<img width="1200" height="456" alt="CleanShot 2026-03-11 at 22 44 24@2x" src="https://github.com/user-attachments/assets/5cf225fc-ff62-4071-a3a8-d23d3930a648" />
+
+# doq
 Query Apple developer documentation from your terminal. Builds a fast SQLite search index from Xcode's SDK symbol graphs.
 
 ## Installation
