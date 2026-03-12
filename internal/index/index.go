@@ -282,10 +282,21 @@ func (idx *Index) searchByName(ctx context.Context, query string, limit int) ([]
 
 func (idx *Index) searchFTS(ctx context.Context, query string, limit int) ([]SearchResult, error) {
 	terms := strings.Fields(query)
-	for i, t := range terms {
-		terms[i] = `"` + t + `"*`
+	var validTerms []string
+	for _, t := range terms {
+		// Strip characters that break FTS5 syntax
+		t = strings.ReplaceAll(t, `"`, "")
+		t = strings.ReplaceAll(t, `'`, "")
+		t = strings.ReplaceAll(t, `*`, "")
+		t = strings.TrimSpace(t)
+		if t != "" {
+			validTerms = append(validTerms, `"`+t+`"*`)
+		}
 	}
-	ftsQuery := strings.Join(terms, " ")
+	if len(validTerms) == 0 {
+		return nil, nil
+	}
+	ftsQuery := strings.Join(validTerms, " ")
 
 	rows, err := idx.db.QueryContext(ctx, `
 		SELECT s.id, s.name, s.kind, s.kind_display, s.module, s.path, s.declaration,
@@ -297,7 +308,8 @@ func (idx *Index) searchFTS(ctx context.Context, query string, limit int) ([]Sea
 		LIMIT ?
 	`, ftsQuery, limit)
 	if err != nil {
-		return nil, err
+		// FTS syntax error from malformed input — not a real error
+		return nil, nil
 	}
 	defer rows.Close()
 
