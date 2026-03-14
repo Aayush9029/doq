@@ -53,6 +53,9 @@ func run(args []string) error {
 	case "index", "ix":
 		return cmdIndex(args[1:])
 
+	case "docs", "d":
+		return cmdDocs(args[1:])
+
 	case "--version", "-v", "version":
 		fmt.Printf("doq %s\n", version)
 		return nil
@@ -76,6 +79,7 @@ func showHelp() {
 	fmt.Println("  doq list                List indexed frameworks")
 	fmt.Println("  doq index [frameworks]  Build/rebuild search index")
 	fmt.Println("  doq index --all         Index all SDK frameworks")
+	fmt.Println("  doq docs                Semantic Apple docs search")
 	fmt.Println("  doq --version           Show version")
 	fmt.Println()
 }
