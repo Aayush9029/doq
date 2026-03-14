@@ -62,14 +62,6 @@ For semantic docs search on macOS 26+, `doq docs` uses Apple's local documentati
 - Go 1.26+ (build only)
 - macOS 26+ for `doq docs`
 
-## Homebrew E2E
-
-Run the published-tap smoke test for both the regular SQLite index and the vector docs backend:
-
-```bash
-scripts/e2e_homebrew.sh
-```
-
 ## License
 
 MIT
