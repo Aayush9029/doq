@@ -1,14 +1,21 @@
-<img src="assets/icon.png" width="128" alt="doq">
+<p align="center">
+  <img src="assets/icon.png" width="128" alt="doq">
+  <h1 align="center">doq</h1>
+  <p align="center">Query Apple developer documentation from your terminal</p>
+</p>
 
-# doq
-Query Apple developer documentation from your terminal. Builds a fast SQLite search index from Xcode's SDK symbol graphs.
+<p align="center">
+  <a href="https://github.com/Aayush9029/doq/releases/latest"><img src="https://img.shields.io/github/v/release/Aayush9029/doq" alt="Release"></a>
+  <a href="https://github.com/Aayush9029/doq/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Aayush9029/doq" alt="License"></a>
+</p>
 
-On macOS 26+, `doq` also supports semantic Apple docs search through the system documentation vector database.
+<p align="center">
 
 https://github.com/user-attachments/assets/9d4c5154-8fe9-437f-9f03-b287cb7188af
 
+</p>
 
-## Installation
+## Install
 
 ```bash
 brew install aayush9029/tap/doq
@@ -24,25 +31,17 @@ brew install doq
 ## Usage
 
 ```bash
-doq                          # Launch interactive TUI
-doq search View              # Search for symbols
-doq info View                # Full declaration + docs
-doq list                     # List indexed frameworks
-doq index                    # Build index (curated ~30 frameworks)
-doq index Swift Foundation   # Index specific frameworks
-doq index --all              # Index all ~295 SDK frameworks
-doq docs                     # Launch semantic docs TUI (macOS 26+)
+doq                          # launch interactive TUI
+doq search View              # search for symbols
+doq info View                # full declaration + docs
+doq list                     # list indexed frameworks
+doq index                    # build index (curated ~30 frameworks)
+doq index Swift Foundation   # index specific frameworks
+doq index --all              # index all ~295 SDK frameworks
+doq docs                     # launch semantic docs TUI (macOS 26+)
 doq docs search "swift testing"
 doq docs get /documentation/Testing
 ```
-
-## Options
-
-| Flag | Description |
-|------|-------------|
-| `--version` | Show version |
-| `--help` | Show help |
-| `--all` | Index all SDK frameworks (with `index`) |
 
 ## How it works
 
@@ -51,13 +50,7 @@ doq docs get /documentation/Testing
 3. Builds a SQLite FTS5 index at `~/.local/share/doq/index.db`
 4. Queries the index with ranked full-text search
 
-For semantic docs search on macOS 26+, `doq docs` uses Apple's local documentation asset plus the system embedding and vector search frameworks.
-
-## Requirements
-
-- macOS with Xcode (or Command Line Tools) installed
-- Go 1.26+ (build only)
-- macOS 26+ for `doq docs`
+On macOS 26+, `doq docs` uses Apple's local documentation asset plus the system embedding and vector search frameworks.
 
 ## License
 
