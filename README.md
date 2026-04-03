@@ -7,8 +7,7 @@ On macOS 26+, `doq` also supports semantic Apple docs search through the system 
 
 https://github.com/user-attachments/assets/9d4c5154-8fe9-437f-9f03-b287cb7188af
 
-
-
+<p align="center"><img src="assets/demo.gif" alt="doq demo" width="800"></p>
 
 
 ## Installation
